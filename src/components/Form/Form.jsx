@@ -1,6 +1,9 @@
+// import PropTypes from 'prop-types';
+import { StyledForm } from './Form.styled';
+
 const Form = () => {
   return (
-    <form>
+    <StyledForm>
       <label>
         Name
         <input
@@ -11,8 +14,19 @@ const Form = () => {
           required
         />
       </label>
+      <label>
+        Number
+        <input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+      </label>
+
       <button>Add contact</button>
-    </form>
+    </StyledForm>
   );
 };
 
