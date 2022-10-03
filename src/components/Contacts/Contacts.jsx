@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types';
+import { ContactsList, Contact, Name, Number, Info } from './Contacts.styled';
 
 const Contacts = ({ contacts }) => {
   return (
-    <ul>
-      {contacts.map(({ id, name, number }) => (
-        <li key={id}>
-          <span>{name}</span>: <span>{number}</span>
-        </li>
-      ))}
-    </ul>
+    <>
+      {contacts.length !== 0 ? (
+        <ContactsList>
+          {contacts.map(({ id, name, number }) => (
+            <Contact key={id}>
+              <Name>{name}: </Name>
+              <Number>{number}</Number>
+            </Contact>
+          ))}
+        </ContactsList>
+      ) : (
+        <Info>No contacts in your Phonebook!</Info>
+      )}
+    </>
   );
 };
 
