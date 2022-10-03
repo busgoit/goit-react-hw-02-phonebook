@@ -15,6 +15,11 @@ export class App extends Component {
     number: '',
   };
 
+  onFormSubmit = e => {
+    e.preventDefault();
+    console.log(this.state);
+  };
+
   onInputChange = e => {
     // if (e.currentTarget.name === 'name')
     //   this.setState({ name: e.currentTarget.value });
@@ -30,7 +35,12 @@ export class App extends Component {
     return (
       <>
         <Section title="Phonebook">
-          <Form name={name} number={number} onChange={this.onInputChange} />
+          <Form
+            name={name}
+            number={number}
+            onSubmit={this.onFormSubmit}
+            onChange={this.onInputChange}
+          />
         </Section>
         <Section title="Contacts">
           <Contacts contacts={contacts} />

@@ -1,9 +1,10 @@
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyledForm } from './Form.styled';
 
-const Form = ({ name, number, onChange }) => {
+const Form = ({ name, number, onSubmit, onChange }) => {
   return (
-    <StyledForm>
+    <StyledForm onSubmit={onSubmit}>
       <label htmlFor="name">Name</label>
       <input
         type="text"
@@ -38,5 +39,6 @@ export default Form;
 Form.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  // onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
