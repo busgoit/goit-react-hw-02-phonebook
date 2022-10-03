@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 import Form from './Form';
 import Contacts from './Contacts';
 import Section from './Section';
@@ -11,36 +12,26 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
+    // name: '',
+    // number: '',
   };
 
-  onFormSubmit = e => {
-    e.preventDefault();
-    console.log(this.state);
-  };
-
-  onInputChange = e => {
-    // if (e.currentTarget.name === 'name')
-    //   this.setState({ name: e.currentTarget.value });
-    // if (e.currentTarget.name === 'number')
-    //   this.setState({ number: e.currentTarget.value });
-    const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
+  onFormSubmit = data => {
+    // const { contacts } = this.state;
+    const { name, number } = data;
+    console.log(name, number);
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, { id: nanoid(), name, number }],
+    }));
   };
 
   render() {
-    const { contacts, name, number } = this.state;
+    const { contacts } = this.state;
 
     return (
       <>
         <Section title="Phonebook">
-          <Form
-            name={name}
-            number={number}
-            onSubmit={this.onFormSubmit}
-            onChange={this.onInputChange}
-          />
+          <Form onSubmit={this.onFormSubmit} />
         </Section>
         <Section title="Contacts">
           <Contacts contacts={contacts} />
