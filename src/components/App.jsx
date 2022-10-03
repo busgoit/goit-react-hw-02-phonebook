@@ -17,9 +17,15 @@ export class App extends Component {
   };
 
   onFormSubmit = data => {
-    // const { contacts } = this.state;
+    const { contacts } = this.state;
     const { name, number } = data;
-    console.log(name, number);
+
+    if (contacts.some(contact => contact.name === name)) {
+      return alert(
+        `The contact for ${name} is already exist in your Phonebook!`
+      );
+    }
+
     this.setState(({ contacts }) => ({
       contacts: [...contacts, { id: nanoid(), name, number }],
     }));
