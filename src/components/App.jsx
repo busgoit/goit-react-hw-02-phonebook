@@ -15,13 +15,20 @@ export class App extends Component {
     number: '',
   };
 
+  onInputChange = e => {
+    if (e.currentTarget.name === 'name')
+      this.setState({ name: e.currentTarget.value });
+    if (e.currentTarget.name === 'number')
+      this.setState({ number: e.currentTarget.value });
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, name, number } = this.state;
 
     return (
       <>
         <Section title="Phonebook">
-          <Form />
+          <Form name={name} number={number} onChange={this.onInputChange} />
         </Section>
         <Section title="Contacts">
           <Contacts contacts={contacts} />
