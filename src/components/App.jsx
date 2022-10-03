@@ -20,13 +20,15 @@ export class App extends Component {
     const { name, number } = data;
 
     const isInContacts = contacts.some(
-      contact => contact.name.toLowerCase === name.toLowerCase
+      contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isInContacts) return alert(`${name} is already in your contacts!`);
 
     this.setState(({ contacts }) => ({
-      contacts: [...contacts, { id: nanoid(), name, number }],
+      contacts: [...contacts, { id: nanoid(), name, number }].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
     }));
   };
 

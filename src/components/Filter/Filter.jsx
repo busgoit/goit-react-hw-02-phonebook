@@ -24,7 +24,7 @@ class Filter extends Component {
           name="filter"
           value={this.state.number}
           onChange={this.onFilterInput}
-          placeholder="Enter contact"
+          placeholder="Enter name"
           required
         />
       </StyledFilter>

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import { StyledForm, FormLabel, FormInput, SubmitButton } from './Form.styled';
 
 class Form extends Component {
@@ -7,6 +8,9 @@ class Form extends Component {
     name: '',
     number: '',
   };
+
+  nameInputId = nanoid();
+  numberInputId = nanoid();
 
   onFormSubmitHandle = e => {
     e.preventDefault();
@@ -29,10 +33,11 @@ class Form extends Component {
   render() {
     return (
       <StyledForm onSubmit={this.onFormSubmitHandle}>
-        <FormLabel htmlFor="name">Name</FormLabel>
+        <FormLabel htmlFor={this.nameInputId}>Name</FormLabel>
         <FormInput
           type="text"
           name="name"
+          id={this.nameInputId}
           value={this.state.name}
           onChange={this.onInputChange}
           placeholder="Enter name"
@@ -41,10 +46,11 @@ class Form extends Component {
           required
         />
 
-        <FormLabel htmlFor="number">Number</FormLabel>
+        <FormLabel htmlFor={this.numberInputId}>Number</FormLabel>
         <FormInput
           type="tel"
           name="number"
+          id={this.numberInputId}
           value={this.state.number}
           onChange={this.onInputChange}
           placeholder="Enter phone number"
