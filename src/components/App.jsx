@@ -32,12 +32,33 @@ export class App extends Component {
     }));
   };
 
-  onFilterChange = filterValue => {
-    this.setState({ filter: filterValue });
+  onFilterChange = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
+    const normalisedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalisedFilter)
+    );
+  };
+
+  deleteContact = e => {
+    console.log(e.currentTarget.id);
+
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts].filter(
+        contact => contact.id === e.currentTarget.id
+      ),
+    }));
   };
 
   render() {
-    const { contacts } = this.state;
+    const { filter } = this.state;
+
+    const filteredContacts = this.getFilteredContacts();
 
     return (
       <>
@@ -45,8 +66,8 @@ export class App extends Component {
           <Form onSubmit={this.addContactOnFormSubmit} />
         </Section>
         <Section title="Contacts">
-          <Filter onFilterInput={this.onFilterChange} />
-          <Contacts contacts={contacts} />
+          <Filter value={filter} onChange={this.onFilterChange} />
+          <Contacts contacts={filteredContacts} onClick={this.deleteContact} />
         </Section>
       </>
     );
