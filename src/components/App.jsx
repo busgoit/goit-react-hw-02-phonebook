@@ -15,7 +15,7 @@ export class App extends Component {
     filter: '',
   };
 
-  onFormSubmit = data => {
+  addContactOnFormSubmit = data => {
     const { contacts } = this.state;
     const { name, number } = data;
 
@@ -33,7 +33,7 @@ export class App extends Component {
   };
 
   onFilterChange = filterValue => {
-    console.log(filterValue);
+    this.setState({ filter: filterValue });
   };
 
   render() {
@@ -42,7 +42,7 @@ export class App extends Component {
     return (
       <>
         <Section title="Phonebook">
-          <Form onSubmit={this.onFormSubmit} />
+          <Form onSubmit={this.addContactOnFormSubmit} />
         </Section>
         <Section title="Contacts">
           <Filter onFilterInput={this.onFilterChange} />

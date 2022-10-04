@@ -31,6 +31,8 @@ class Form extends Component {
   };
 
   render() {
+    const { name, number } = this.state;
+
     return (
       <StyledForm onSubmit={this.onFormSubmitHandle}>
         <FormLabel htmlFor={this.nameInputId}>Name</FormLabel>
@@ -38,7 +40,7 @@ class Form extends Component {
           type="text"
           name="name"
           id={this.nameInputId}
-          value={this.state.name}
+          value={name}
           onChange={this.onInputChange}
           placeholder="Enter name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -51,7 +53,7 @@ class Form extends Component {
           type="tel"
           name="number"
           id={this.numberInputId}
-          value={this.state.number}
+          value={number}
           onChange={this.onInputChange}
           placeholder="Enter phone number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
