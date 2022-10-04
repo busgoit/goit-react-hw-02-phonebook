@@ -1,18 +1,26 @@
 import PropTypes from 'prop-types';
-import { ContactsList, Contact, Name, Number, Info } from './Contacts.styled';
+import { TiDeleteOutline } from 'react-icons/ti';
+import {
+  ContactsList,
+  Contact,
+  Name,
+  Number,
+  Button,
+  Info,
+} from './Contacts.styled';
 
 const Contacts = ({ contacts, onClick }) => {
   return (
     <>
       {contacts.length !== 0 ? (
-        <ContactsList>
+        <ContactsList onClick={onClick}>
           {contacts.map(({ id, name, number }) => (
             <Contact key={id}>
               <Name>{name}: </Name>
               <Number>{number}</Number>
-              <button type="button" onClick={onClick} id={id}>
-                delete
-              </button>
+              <Button type="button" id={id}>
+                <TiDeleteOutline />
+              </Button>
             </Contact>
           ))}
         </ContactsList>

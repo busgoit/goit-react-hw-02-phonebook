@@ -38,3 +38,35 @@ export const Number = styled.span`
 export const Info = styled.span`
   font-size: 16px;
 `;
+
+export const Button = styled.button`
+  width: 40px;
+  height: 20px;
+
+  margin-left: 20px;
+
+  font-size: 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  outline: none;
+
+  transition: 0.2s ease-in-out;
+
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 11px 11px 23px #b1b1b1, -11px -11px 23px #ffffff;
+
+  &:hover {
+    opacity: 0.5;
+    color: red;
+  }
+
+  &:active {
+    opacity: 1;
+    background: #e0e0e0;
+    box-shadow: inset 11px 11px 23px #b1b1b1, inset -11px -11px 23px #ffffff;
+  }
+`;

@@ -40,18 +40,20 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     const normalisedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
+    return [...contacts].filter(contact =>
       contact.name.toLowerCase().includes(normalisedFilter)
     );
   };
 
   deleteContact = e => {
-    console.log(e.currentTarget.id);
-
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts].filter(
-        contact => contact.id === e.currentTarget.id
-      ),
+    const contactToDeleteID = e.target.id;
+    console.log(e);
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => {
+        console.log(contact.id);
+        console.log(contactToDeleteID);
+        return contact.id !== contactToDeleteID;
+      }),
     }));
   };
 
