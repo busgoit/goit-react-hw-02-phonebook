@@ -72,12 +72,3 @@ export default Form;
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
-
-//  onInputChange = e => {
-//    // if (e.currentTarget.name === 'name')
-//    //   this.setState({ name: e.currentTarget.value });
-//    // if (e.currentTarget.name === 'number')
-//    //   this.setState({ number: e.currentTarget.value });
-//    const { name, value } = e.currentTarget;
-//    this.setState({ [name]: value });
-//  };
