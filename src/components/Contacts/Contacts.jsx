@@ -9,16 +9,16 @@ import {
   Info,
 } from './Contacts.styled';
 
-const Contacts = ({ contacts, onClick }) => {
+const Contacts = ({ contacts, onDelete }) => {
   return (
     <>
       {contacts.length !== 0 ? (
-        <ContactsList onClick={onClick}>
+        <ContactsList>
           {contacts.map(({ id, name, number }) => (
             <Contact key={id}>
               <Name>{name}: </Name>
               <Number>{number}</Number>
-              <Button type="button" id={id}>
+              <Button type="button" onClick={() => onDelete(id)}>
                 <TiDeleteOutline />
               </Button>
             </Contact>
@@ -41,5 +41,5 @@ Contacts.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  onClick: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };

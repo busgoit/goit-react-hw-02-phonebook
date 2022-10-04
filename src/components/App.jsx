@@ -45,14 +45,14 @@ export class App extends Component {
     );
   };
 
-  deleteContact = e => {
-    const contactToDeleteID = e.target.id;
-    console.log(e);
+  deleteContact = deleteID => {
+    // const contactToDeleteID = e.target.id;
+    console.log(deleteID);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => {
         console.log(contact.id);
-        console.log(contactToDeleteID);
-        return contact.id !== contactToDeleteID;
+        console.log(deleteID);
+        return contact.id !== deleteID;
       }),
     }));
   };
@@ -69,7 +69,7 @@ export class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter value={filter} onChange={this.onFilterChange} />
-          <Contacts contacts={filteredContacts} onClick={this.deleteContact} />
+          <Contacts contacts={filteredContacts} onDelete={this.deleteContact} />
         </Section>
       </>
     );
